@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE HTML>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QueueLang Docs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Fredoka:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&amp;family=Fredoka:wght@400;500&amp;display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpeg" href="favicon.jpg">
     <style>
         /* General Styling */
@@ -17,14 +16,13 @@
 
         /* Header */
         header {
-            background-color: #4CAF50;
+            background-color: #5294ff; /* Changed to blue */
             color: white;
             padding: 15px 20px;
             text-align: center;
             font-size: 2em;
             font-family: 'Fredoka One', sans-serif;
-            /* Removed position: sticky */
-            top: 0
+            top: 0;
             z-index: 1000;
         }
 
@@ -34,8 +32,6 @@
             padding: 10px;
             display: flex;
             justify-content: center;
-            /* position: sticky; */
-            /* : 60px; */
             z-index: 999;
         }
 
@@ -50,7 +46,7 @@
 
         nav a:hover {
             text-decoration: underline;
-            color: #4CAF50;
+            color: #5294ff; /* Changed to blue */
         }
 
         /* Contents Bar */
@@ -91,7 +87,7 @@
         }
 
         .contents-bar a:hover {
-            color: #4CAF50;
+            color: #5294ff; /* Changed to blue */
         }
 
         /* Sections */
@@ -105,11 +101,11 @@
         }
 
         section h2 {
-            color: #4CAF50;
-            border-bottom: 2px solid #4CAF50;
+            color: #5294ff; /* Changed to blue */
+            border-bottom: 2px solid #5294ff; /* Changed to blue */
             padding-bottom: 5px;
             font-size: 32px;
-            margin-bottom: 15px; /* Added margin for alignment */
+            margin-bottom: 15px;
         }
 
         pre {
@@ -128,7 +124,7 @@
         /* Footer */
         footer {
             text-align: center;
-            background-color: #4CAF50;
+            background-color: #5294ff; /* Changed to blue */
             color: white;
             padding: 10px;
             position: fixed;
@@ -138,7 +134,7 @@
 
         /* Toggle Theme Button */
         .toggle-theme {
-            background-color: #4CAF50;
+            background-color: #5294ff; /* Changed to blue */
             color: white;
             padding: 10px 20px;
             border: none;
@@ -151,13 +147,13 @@
         }
 
         .toggle-theme:hover {
-            background-color: #45a049;
+            background-color: #4483e2; /* Darker blue on hover */
             transform: scale(1.05);
         }
 
         /* Download Button Styling */
         .download-button {
-            background-color: #4CAF50;
+            background-color: #5294ff; /* Changed to blue */
             color: white;
             padding: 15px 30px;
             font-size: 1.2em;
@@ -170,35 +166,34 @@
         }
 
         .download-button:hover {
-            background-color: #45a049;
+            background-color: #4483e2; /* Darker blue on hover */
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
             transform: scale(1.05);
         }
 
         .download-button:active {
-            background-color: #3e8e41;
+            background-color: #3a74c8; /* Darker blue on click */
         }
-        
+
         body.dark-theme .contents-bar a {
-    color: #333; /* Light color for dark theme */
-}
+            color: #333; /* Light color for dark theme */
+        }
 
-body.dark-theme .contents-bar a:hover {
-    color: #4CAF50; /* Green color on hover */
-}
+        body.dark-theme .contents-bar a:hover {
+            color: #5294ff; /* Changed to blue */
+        }
 
-/* Regular theme color for the links */
-body:not(.dark-theme) .contents-bar a {
-    color: #333; /* Dark color for light theme */
-}
+        body:not(.dark-theme) .contents-bar a {
+            color: #333; /* Dark color for light theme */
+        }
 
-body:not(.dark-theme) .contents-bar a:hover {
-    color: #4CAF50; /* Green color on hover */
-}
+        body:not(.dark-theme) .contents-bar a:hover {
+            color: #5294ff; /* Changed to blue */
+        }
 
         /* Add active effect to links */
         nav a.active, .contents-bar a.active {
-            color: #4CAF50;
+            color: #5294ff; /* Changed to blue */
         }
     </style>
 </head>
@@ -212,6 +207,7 @@ body:not(.dark-theme) .contents-bar a:hover {
         <a href="#features" class="nav-link">Features</a>
         <a href="#examples" class="nav-link">Examples</a>
         <a href="#download" class="nav-link">Download</a>
+        <a href="#community" class="nav-link">Community</a>
     </nav>
 
     <div class="contents-bar">
@@ -222,6 +218,7 @@ body:not(.dark-theme) .contents-bar a:hover {
             <li><a href="#features" class="contents-link">Features</a></li>
             <li><a href="#examples" class="contents-link">Examples</a></li>
             <li><a href="#download" class="contents-link">Download</a></li>
+            <li><a href="#community" class="contents-link">Community</a></li>
         </ul>
     </div>
 
@@ -257,6 +254,16 @@ console.out(toString(add(6, 3)))</code></pre>
             <h2>Download</h2>
             <a href="https://github.com/QueueLang/QueueLang/releases" class="download-button">Download QueueLang</a>
         </section>
+        <section id="community">
+    <h2>Community</h2>
+    <p>The QueueLang community is growing! Join us to discuss, share projects, and collaborate with others. We encourage contributions, questions, and feedback to help make QueueLang better.</p>
+    <ul>
+        <li><a style="color: #5294ff" href="https://github.com/QueueLang/QueueLang" target="_blank">QueueLang GitHub</a> - Check out the source code and contribute to the project.</li>
+        <li><a style="color: #5294ff" href="https://github.com/Quemunnity" target="_blank">Community</a> - Visit the official community page for this project!</li>
+        <li><a style="color: #5294ff" href="https://github.com/QueueLang/QueueLang/issues" target="_blank">Issues</a> - Ask questions, find answers, or engage in discussions about QueueLang.</li>
+    </ul>
+    <p>We look forward to seeing what you build with QueueLang!</p>
+</section>
     </main>
 
     <footer>
@@ -312,5 +319,6 @@ console.out(toString(add(6, 3)))</code></pre>
             }
         }
     </script>
-</body>
-</html>
+
+
+</body></html>
