@@ -1,160 +1,316 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <title>QueueLang Docs</title>
-        <meta charset="utf-8">
-        <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Fredoka:wght@400;500&display=swap" rel="stylesheet">
-        <link rel="icon" type="image/jpeg" href="favicon.jpg">
-        <style>
-            body {
-                font-family: 'Fredoka', sans-serif;
-                background-color: #f9f9f9;
-                color: #333;
-                margin: 0;
-                padding: 0;
-            }
-            header {
-                background-color: #4CAF50;
-                color: white;
-                padding: 15px 20px;
-                text-align: center;
-                font-size: 2em;
-                font-family: 'Fredoka One', sans-serif;
-            }
-            nav {
-                background-color: #333;
-                padding: 10px;
-                display: flex;
-                justify-content: center;
-            }
-            nav a {
-                color: white;
-                margin: 0 15px;
-                text-decoration: none;
-                font-size: 1.2em;
-            }
-            nav a:hover {
-                text-decoration: underline;
-            }
-            main {
-                padding: 20px;
-            }
-            section {
-                margin-bottom: 40px;
-            }
-            h2 {
-                color: #4CAF50;
-                border-bottom: 2px solid #4CAF50;
-                padding-bottom: 5px;
-                font-family: 'Fredoka One', sans-serif;
-                font-size: 32px;
-            }
-            h1 {
-                color: #4CAF50;
-                font-family: 'Fredoka', sans-serif;
-                font-size: 22px;
-            }
-            p {
-                font-family: 'Fredoka', sans-serif;
-            }
-            pre {
-                background-color: #2d2d2d;
-                color: #f8f8f2;
-                padding: 15px;
-                border-radius: 8px;
-                overflow-x: auto;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            }
-            code {
-                font-family: 'Consolas', 'Courier New', monospace;
-            }
-            footer {
-                text-align: center;
-                background-color: #4CAF50;
-                color: white;
-                padding: 10px;
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-            }
-            .download-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    text-decoration: none;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding-top: 1px;
-    padding-bottom: 3px;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QueueLang Docs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Fredoka:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Fredoka', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Header */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 2em;
+            font-family: 'Fredoka One', sans-serif;
+            /* Removed position: sticky */
+            top: 0
+            z-index: 1000;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            /* position: sticky; */
+            /* : 60px; */
+            z-index: 999;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: #4CAF50;
+        }
+
+        /* Contents Bar */
+        .contents-bar {
+            position: fixed;
+            top: 130px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            z-index: 9999;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .contents-bar h2 {
+            margin: 0;
+            padding: 5px;
+            font-size: 1.2em;
+        }
+
+        .contents-bar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contents-bar li {
+            margin: 5px 0;
+        }
+
+        .contents-bar a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .contents-bar a:hover {
+            color: #4CAF50;
+        }
+
+        /* Sections */
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            transition: transform 0.6s, opacity 0.6s;
+        }
+
+        section h2 {
+            color: #4CAF50;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
+            font-size: 32px;
+            margin-bottom: 15px; /* Added margin for alignment */
+        }
+
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        code {
+            font-family: 'Consolas', 'Courier New', monospace;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Toggle Theme Button */
+        .toggle-theme {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .toggle-theme:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        /* Download Button Styling */
+        .download-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            padding-top: 1px;
+            padding-bottom: 3px;
+        }
+
+        .download-button:hover {
+            background-color: #45a049;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            transform: scale(1.05);
+        }
+
+        .download-button:active {
+            background-color: #3e8e41;
+        }
+        
+        body.dark-theme .contents-bar a {
+    color: #333; /* Light color for dark theme */
 }
-.download-button:hover {
-    background-color: #45a049;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+
+body.dark-theme .contents-bar a:hover {
+    color: #4CAF50; /* Green color on hover */
 }
-        </style>
-    </head>
-    <body>
-        <header>
-            Welcome to QueueLang Documentation
-        </header>
-        <nav>
-            <a href="#introduction">Introduction</a>
-            <a href="#syntax">Syntax</a>
-            <a href="#features">Features</a>
-            <a href="#examples">Examples</a>
-            <a href="#download">Download</a>
-        </nav>
-        <main>
-            <section id="introduction">
-                <h2>Introduction</h2>
-                <p>QueueLang is a versatile interpreted programming language written in C++. Designed for simplicity and speed, it features a queue-inspired syntax while supporting advanced constructs like functions and lambdas.</p>
-            </section>
-            <section id="syntax">
-                <h2>Basic Syntax</h2>
-                <p>The following demonstrates the basics of QueueLang syntax:</p>
-                <pre><code>
-queue x = 0
+
+/* Regular theme color for the links */
+body:not(.dark-theme) .contents-bar a {
+    color: #333; /* Dark color for light theme */
+}
+
+body:not(.dark-theme) .contents-bar a:hover {
+    color: #4CAF50; /* Green color on hover */
+}
+
+        /* Add active effect to links */
+        nav a.active, .contents-bar a.active {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Welcome to QueueLang Documentation
+    </header>
+    <nav>
+        <a href="#introduction" class="nav-link">Introduction</a>
+        <a href="#syntax" class="nav-link">Syntax</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#examples" class="nav-link">Examples</a>
+        <a href="#download" class="nav-link">Download</a>
+    </nav>
+
+    <div class="contents-bar">
+        <h2 style="color: #333">Contents</h2>
+        <ul>
+            <li><a href="#introduction" class="contents-link">Introduction</a></li>
+            <li><a href="#syntax" class="contents-link">Syntax</a></li>
+            <li><a href="#features" class="contents-link">Features</a></li>
+            <li><a href="#examples" class="contents-link">Examples</a></li>
+            <li><a href="#download" class="contents-link">Download</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>QueueLang is a versatile interpreted programming language written in C++ for performance and speed. QueueLang is relatively stable and easy to use. QueueLang has all the basic needs, like variable support, user-defined and core-functions. It also supports more complicated things like math, lambdas, and plugin support.</p>
+        </section>
+        <section id="syntax">
+            <h2>Basic Syntax</h2>
+            <pre><code>queue x = 0
 queue y = 5
 
-console.out(toString(x + y))
-                </code></pre>
-            </section>
-            <section id="features">
-                <h2>Key Features</h2>
-                <ul>
-                    <li>Interpreted language for quick execution and debugging.</li>
-                    <li>Written in C++ for efficiency.</li>
-                    <li>Supports functions, lambdas, and plugin integration.</li>
-                    <li>Inspired by Python, with a unique focus on queues and functional programming.</li>
-                </ul>
-            </section>
-            <section id="download">
-                <h2>Download</h2>
-                <h1>Getting Started with QueueLang</h1>
-                <p>Ready to dive into the world of QueueLang? Download the latest version and start building your projects today! Whether you’re creating simple scripts or complex applications, QueueLang’s simple, queue-based syntax and powerful features will help you get things done quickly and efficiently.</p>
-                <a href="https://github.com/QueueLang/QueueLang/releases" class="download-button">Download QueueLang</a>
-            </section>
-            <section id="examples">
-                <h2>Examples</h2>
-                <p>Function definition and usage:</p>
-                <pre><code>
-func add(x, y) {
+console.out(toString(x + y))</code></pre>
+        </section>
+        <section id="features">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Interpreted language for quick execution and debugging.</li>
+                <li>Written in C++ for efficiency.</li>
+                <li>Supports basic arithmetics, necessary functions, lambdas, and plugin integration.</li>
+            </ul>
+        </section>
+        <section id="examples">
+            <h2>Examples</h2>
+            <pre><code>func add(x, y) {
     return x + y
 }
 
-console.out(toString(add(6 + 3)))
-                </code></pre>
-                <p>Lambda example:</p>
-                <pre><code>
-add = lambda x, y: x + y
+console.out(toString(add(6, 3)))</code></pre>
+        </section>
+        <section id="download">
+            <h2>Download</h2>
+            <a href="https://github.com/QueueLang/QueueLang/releases" class="download-button">Download QueueLang</a>
+        </section>
+    </main>
 
-console.out(add(4 + 12))
-                </code></pre>
-            </section>
-        </main>
-        <footer>
-            © 2024 QueueLang Project. All rights reserved.
-        </footer>
-    </body>
+    <footer>
+        © 2024 QueueLang Project. All rights reserved.
+    </footer>
+
+    <button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
+
+    <script>
+        // Smooth Scroll Function
+        function smoothScroll(target, duration) {
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+            const startPosition = window.scrollY;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = easeInOutSine(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            function easeInOutSine(t, b, c, d) {
+                return -c / 2 * (Math.cos(Math.PI * t / d) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        document.querySelectorAll('nav a, .contents-bar a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                smoothScroll(target, 1000); // Smooth scroll duration: 1 second
+                // Set active class for links
+                document.querySelectorAll('.nav-link, .contents-link').forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-theme');
+            if (body.classList.contains('dark-theme')) {
+                body.style.backgroundColor = '#333';
+                body.style.color = '#f9f9f9';
+            } else {
+                body.style.backgroundColor = '#f9f9f9';
+                body.style.color = '#333';
+            }
+        }
+    </script>
+</body>
 </html>
