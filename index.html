@@ -62,6 +62,46 @@
             z-index: 9999;
             transition: transform 0.5s ease-in-out;
         }
+        
+        /* Cool Things! */
+        
+section:hover {
+    background-color: rgba(82, 148, 255, 0.1);
+    transform: scale(1.02);
+    border-radius: 8px; /* Added border-radius */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+}
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .fancy-button, .toggle-theme {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+header, footer {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.fancy-button, .toggle-theme {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
 
         .contents-bar h2 {
             margin: 0;
@@ -118,7 +158,6 @@
         .bold-text {
             font-weight: bold;
             font-size: 18px;
-            color: rgb(14, 14, 15);
         }
 
         pre {
@@ -208,6 +247,31 @@
         nav a.active, .contents-bar a.active {
             color: #5294ff; /* Changed to blue */
         }
+        
+        
+        
+        
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #5294ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s;
+        }
+
+        .copy-button:hover {
+            background-color: #4483e2;
+        }
+
+        .copy-button:active {
+            background-color: #3a74c8;
+        }
     </style>
 </head>
 <body>
@@ -247,7 +311,10 @@
             <pre><code>queue x = 0
 queue y = 5
 
-console.out(toString(x + y))</code></pre>
+console.out(x + y)</code>
+                <button class="copy-button" onclick="copyCode(this)">Copy Code</button>
+
+</pre>
         </section>
         <section id="features">
             <h2>Key Features</h2>
@@ -263,7 +330,9 @@ console.out(toString(x + y))</code></pre>
     return x + y
 }
 
-console.out(toString(add(6, 3)))</code></pre>
+console.out(add(6, 3))</code>
+<button class="copy-button" onclick="copyCode(this)">Copy Code</button>
+</pre>
         </section>
         <section id="download">
             <h2>Download</h2>
@@ -357,6 +426,18 @@ console.out(toString(add(6, 3)))</code></pre>
                 body.style.color = '#333';
             }
         }
+        
+        function copyCode(button) {
+            const codeContent = button.previousElementSibling.innerText;
+            navigator.clipboard.writeText(codeContent).then(() => {
+                const originalText = button.innerText;
+                button.innerText = "Copied!";
+                setTimeout(() => {
+                    button.innerText = originalText;
+                }, 2000);
+            });
+        }
+        
     </script>
 </body>
 </html>
