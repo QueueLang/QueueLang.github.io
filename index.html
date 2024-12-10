@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="en"><head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QueueLang Docs</title>
@@ -97,7 +98,13 @@
 
         section {
             margin-bottom: 40px;
-            transition: transform 0.6s, opacity 0.6s;
+            opacity: 0; /* Hide initially */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        section.visible {
+            opacity: 1; /* Show when it comes into view */
+            transform: translateY(0);
         }
 
         section h2 {
@@ -106,6 +113,12 @@
             padding-bottom: 5px;
             font-size: 32px;
             margin-bottom: 15px;
+        }
+        
+        .bold-text {
+            font-weight: bold;
+            font-size: 18px;
+            color: rgb(14, 14, 15);
         }
 
         pre {
@@ -152,7 +165,7 @@
         }
 
         /* Download Button Styling */
-        .download-button {
+        .fancy-button {
             background-color: #5294ff; /* Changed to blue */
             color: white;
             padding: 15px 30px;
@@ -165,13 +178,13 @@
             padding-bottom: 3px;
         }
 
-        .download-button:hover {
+        .fancy-button:hover {
             background-color: #4483e2; /* Darker blue on hover */
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
             transform: scale(1.05);
         }
 
-        .download-button:active {
+        .fancy-button:active {
             background-color: #3a74c8; /* Darker blue on click */
         }
 
@@ -207,6 +220,7 @@
         <a href="#features" class="nav-link">Features</a>
         <a href="#examples" class="nav-link">Examples</a>
         <a href="#download" class="nav-link">Download</a>
+        <a href="#wiki" class="nav-link">Wiki</a>
         <a href="#community" class="nav-link">Community</a>
     </nav>
 
@@ -218,12 +232,13 @@
             <li><a href="#features" class="contents-link">Features</a></li>
             <li><a href="#examples" class="contents-link">Examples</a></li>
             <li><a href="#download" class="contents-link">Download</a></li>
+            <li><a href="#wiki" class="contents-link">Wiki</a></li>
             <li><a href="#community" class="contents-link">Community</a></li>
         </ul>
     </div>
 
     <main>
-        <section id="introduction">
+        <section id="introduction" class="visible">
             <h2>Introduction</h2>
             <p>QueueLang is a versatile interpreted programming language written in C++ for performance and speed. QueueLang is relatively stable and easy to use. QueueLang has all the basic needs, like variable support, user-defined and core-functions. It also supports more complicated things like math, lambdas, and plugin support.</p>
         </section>
@@ -252,18 +267,24 @@ console.out(toString(add(6, 3)))</code></pre>
         </section>
         <section id="download">
             <h2>Download</h2>
-            <a href="https://github.com/QueueLang/QueueLang/releases" class="download-button">Download QueueLang</a>
+            <p>To download QueueLang, you can click the button below.</p>
+            <a href="https://github.com/QueueLang/QueueLang/releases" class="fancy-button">Download QueueLang</a>
+        </section>
+        <section id="wiki">
+            <h2>Wiki</h2>
+            <p>To visit the official QueueLang Wiki, you can press the button below to be redirected to the wiki page to learn even more!</p>
+            <a class="fancy-button" href="https://github.com/QueueLang/QueueLang/wiki">Visit Wiki</a>
         </section>
         <section id="community">
-    <h2>Community</h2>
-    <p>The QueueLang community is growing! Join us to discuss, share projects, and collaborate with others. We encourage contributions, questions, and feedback to help make QueueLang better.</p>
-    <ul>
-        <li><a style="color: #5294ff" href="https://github.com/QueueLang/QueueLang" target="_blank">QueueLang GitHub</a> - Check out the source code and contribute to the project.</li>
-        <li><a style="color: #5294ff" href="https://github.com/Quemunnity" target="_blank">Community</a> - Visit the official community page for this project!</li>
-        <li><a style="color: #5294ff" href="https://github.com/QueueLang/QueueLang/issues" target="_blank">Issues</a> - Ask questions, find answers, or engage in discussions about QueueLang.</li>
-    </ul>
-    <p>We look forward to seeing what you build with QueueLang!</p>
-</section>
+            <h2>Community</h2>
+            <p>The QueueLang community is growing! Join us to discuss, share projects, and collaborate with others. We encourage contributions, questions, and feedback to help make QueueLang better.</p>
+            <ul>
+                <li><a style="color: #5294ff" href="https://github.com/QueueLang/QueueLang" target="_blank">QueueLang GitHub</a> - Check out the source code and contribute to the project.</li>
+                <li><a style="color: #5294ff" href="https://github.com/Quemunnity" target="_blank">Community</a> - Visit the official community page for this project!</li>
+                <li><a style="color: #5294ff" href="https://github.com/QueueLang/QueueLang/issues" target="_blank">Issues</a> - Ask questions, find answers, or engage in discussions about QueueLang.</li>
+            </ul>
+            <p class="bold-text">We look forward to seeing what you build with QueueLang!</p>
+        </section>
     </main>
 
     <footer>
@@ -273,6 +294,24 @@ console.out(toString(add(6, 3)))</code></pre>
     <button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
 
     <script>
+        // Intersection Observer to trigger section animation when in view
+        const sections = document.querySelectorAll('section');
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
         // Smooth Scroll Function
         function smoothScroll(target, duration) {
             const targetPosition = target.getBoundingClientRect().top + window.scrollY;
@@ -312,13 +351,12 @@ console.out(toString(add(6, 3)))</code></pre>
             body.classList.toggle('dark-theme');
             if (body.classList.contains('dark-theme')) {
                 body.style.backgroundColor = '#333';
-                body.style.color = '#f9f9f9';
+                body.style.color = '#f8f8f2';
             } else {
-                body.style.backgroundColor = '#f9f9f9';
+                body.style.backgroundColor = '#fff';
                 body.style.color = '#333';
             }
         }
     </script>
-
-
-</body></html>
+</body>
+</html>
