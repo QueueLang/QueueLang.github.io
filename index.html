@@ -283,6 +283,7 @@ header, footer {
         <a href="#syntax" class="nav-link">Syntax</a>
         <a href="#features" class="nav-link">Features</a>
         <a href="#examples" class="nav-link">Examples</a>
+        <a href="#plugins" class="nav-link">Plugins</a>
         <a href="#download" class="nav-link">Download</a>
         <a href="#wiki" class="nav-link">Wiki</a>
         <a href="#community" class="nav-link">Community</a>
@@ -295,6 +296,7 @@ header, footer {
             <li><a href="#syntax" class="contents-link">Syntax</a></li>
             <li><a href="#features" class="contents-link">Features</a></li>
             <li><a href="#examples" class="contents-link">Examples</a></li>
+            <li><a href="#plugins" class="contents-link">Plugins</a></li>
             <li><a href="#download" class="contents-link">Download</a></li>
             <li><a href="#wiki" class="contents-link">Wiki</a></li>
             <li><a href="#community" class="contents-link">Community</a></li>
@@ -308,10 +310,12 @@ header, footer {
         </section>
         <section id="syntax">
             <h2>Basic Syntax</h2>
-            <pre><code>queue x = 0
+            <pre><code>import math
+                
+queue x = 0
 queue y = 5
 
-console.out(x + y)</code>
+console.out(math.add(x, y))</code>
                 <button class="copy-button" onclick="copyCode(this)">Copy Code</button>
 
 </pre>
@@ -322,6 +326,7 @@ console.out(x + y)</code>
                 <li>Interpreted language for quick execution and debugging.</li>
                 <li>Written in C++ for efficiency.</li>
                 <li>Supports basic arithmetics, necessary functions, lambdas, and plugin integration.</li>
+                <li>Is relatively fast and extremely stable</li>
             </ul>
         </section>
         <section id="examples">
@@ -333,6 +338,10 @@ console.out(x + y)</code>
 console.out(add(6, 3))</code>
 <button class="copy-button" onclick="copyCode(this)">Copy Code</button>
 </pre>
+        </section>
+        <section id="plugins">
+            <h2>Plugins</h2>
+            <p>QueueLang is a programming language designed for simplicity and performance, written in C++ and interpreted for speed. It features a clean syntax with support for variables, functions, lambdas, and a plugin system that integrates Python code. Plugins are handled via a '.dependencies' file, which tracks package imports and avoids circular dependencies. The language includes commands for compiling '.ql' files to standalone '.exe' executables. QueueLang aims to be easy to use, while offering the flexibility of dynamic imports and external Python module integration during runtime.</p>
         </section>
         <section id="download">
             <h2>Download</h2>
